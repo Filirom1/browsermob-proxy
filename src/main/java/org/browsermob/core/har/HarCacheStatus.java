@@ -1,10 +1,12 @@
 package com.browsermob.core.har;
 
 import com.browsermob.core.json.ISO8601DateFormatter;
+import com.browsermob.core.json.ISO8601DateParser;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.annotate.JsonWriteNullProperties;
 
 import java.util.Date;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @JsonWriteNullProperties(value=false)
 public class HarCacheStatus {
@@ -18,6 +20,7 @@ public class HarCacheStatus {
         return expires;
     }
 
+    @JsonDeserialize(using = ISO8601DateParser.class)
     public void setExpires(Date expires) {
         this.expires = expires;
     }
@@ -26,7 +29,8 @@ public class HarCacheStatus {
     public Date getLastAccess() {
         return lastAccess;
     }
-
+    
+    @JsonDeserialize(using = ISO8601DateParser.class)
     public void setLastAccess(Date lastAccess) {
         this.lastAccess = lastAccess;
     }

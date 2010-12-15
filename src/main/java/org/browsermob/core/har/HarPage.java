@@ -1,11 +1,13 @@
 package com.browsermob.core.har;
 
 import com.browsermob.core.json.ISO8601DateFormatter;
+import com.browsermob.core.json.ISO8601DateParser;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonWriteNullProperties;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @JsonWriteNullProperties(value=false)
 public class HarPage {
@@ -27,6 +29,7 @@ public class HarPage {
         return startedDateTime;
     }
 
+    @JsonDeserialize(using = ISO8601DateParser.class)
     public void setStartedDateTime(Date startedDateTime) {
         this.startedDateTime = startedDateTime;
     }

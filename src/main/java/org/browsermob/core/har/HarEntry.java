@@ -1,11 +1,13 @@
 package com.browsermob.core.har;
 
 import com.browsermob.core.json.ISO8601DateFormatter;
+import com.browsermob.core.json.ISO8601DateParser;
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.annotate.JsonWriteNullProperties;
 
 import java.util.Date;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @JsonWriteNullProperties(value=false)
 @JsonAutoDetect
@@ -30,7 +32,8 @@ public class HarEntry {
     public Date getStartedDateTime() {
         return startedDateTime;
     }
-
+    
+    @JsonDeserialize(using = ISO8601DateParser.class)
     public void setStartedDateTime(Date startedDateTime) {
         this.startedDateTime = startedDateTime;
     }

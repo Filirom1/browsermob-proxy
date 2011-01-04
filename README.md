@@ -13,3 +13,23 @@ HarLog harLog = har.getLog();
 String harBrowser = harLog.getBrowser().getName();
 
 
+Maven repository
+----------------
+Add the following lines in your pom.xml
+
+    <dependencies>
+        ....
+        <dependency>
+            <groupId>com.browsermob</groupId>
+            <artifactId>har</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        ....
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>filirom1-repo</id>
+            <url>https://Filirom1@github.com/Filirom1/filirom1-mvn-repo/raw/master/releases</url>
+        </repository>
+    </repositories>
